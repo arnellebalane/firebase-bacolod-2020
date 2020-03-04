@@ -183,9 +183,10 @@
   opacity: 0;
 }
 
+.Tweet__Action--Active,
 .Tweet__Action:hover,
 .Tweet__Action:focus {
-  color: #1ca1f2;
+  color: #e0245e;
 }
 
 .Tweet__Action:hover::before,
@@ -195,4 +196,8 @@
 
 .Tweet__Action svg {
   margin-right: 8px;
+}
+
+.Tweet__Action--Active svg {
+  fill: currentColor;
 }

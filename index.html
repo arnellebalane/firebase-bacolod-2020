@@ -17,8 +17,12 @@
         <h1 class="LoginBox__Heading">Twitter Firebase</h1>
 
         <div class="LoginButtons">
-          <button class="LoginButton LoginButton--Google">Login with Google</button>
-          <button class="LoginButton LoginButton--Twitter">Login with Twitter</button>
+          <button class="LoginButton LoginButton--Google" data-provider="google">
+            Login with Google
+          </button>
+          <button class="LoginButton LoginButton--Twitter" data-provider="twitter">
+            Login with Twitter
+          </button>
         </div>
       </header>
 
@@ -29,5 +33,7 @@
         <img src="images/lock.svg" alt="" />
       </main>
     </div>
+
+    <script src="javascripts/index.js"></script>
   </body>
 </html>

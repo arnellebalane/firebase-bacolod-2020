@@ -22,6 +22,10 @@ textarea {
   color: inherit;
 }
 
+button:disabled {
+  opacity: 0.5;
+}
+
 .Wrapper {
   width: 100%;
   max-width: 64rem;

@@ -1,0 +1,35 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 1.6rem;
+  color: #111111;
+}
+
+a,
+button,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+.Wrapper {
+  width: 100%;
+  max-width: 64rem;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+.Separator {
+  height: 1rem;
+  background-color: #e6ecf0;
+}

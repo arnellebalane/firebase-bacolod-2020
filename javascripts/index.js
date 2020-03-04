@@ -1,6 +1,6 @@
 // Run code whenever any of the login buttons are clicked
-document.querySelector('.LoginButtons').addEventListener('click', event => {
-  const button = event.target.closest('.LoginButton');
+document.querySelector('.login-buttons').addEventListener('click', event => {
+  const button = event.target.closest('button');
   if (!button) return;
 
   const provider = button.dataset.provider;
@@ -16,7 +16,7 @@ document.querySelector('.LoginButtons').addEventListener('click', event => {
 
 // Util function to enable/disable all the login buttons
 function setLoginButtonState(enabled) {
-  const buttons = document.querySelectorAll('.LoginButton');
+  const buttons = document.querySelectorAll('.login-buttons button');
 
   buttons.forEach(button => {
     button.disabled = !enabled;

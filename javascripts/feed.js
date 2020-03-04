@@ -1,5 +1,5 @@
 // Allow user to logout from the app
-document.querySelector('.LogoutButton').addEventListener('click', event => {
+document.querySelector('.logout-button').addEventListener('click', event => {
   event.target.disabled = true;
 
   console.log('Logging out');
@@ -10,7 +10,7 @@ document.querySelector('.LogoutButton').addEventListener('click', event => {
 });
 
 // Allow user to submit new tweets
-document.querySelector('.TweetForm').addEventListener('submit', event => {
+document.querySelector('form').addEventListener('submit', event => {
   event.preventDefault();
 
   const form = event.target;
@@ -30,7 +30,7 @@ document.querySelector('.TweetForm').addEventListener('submit', event => {
 
 // Util function to enable/disable tweet form controls
 function setTweetFormState(enabled) {
-  const elements = document.querySelectorAll('.TweetForm__Input, .TweetForm__Action, .TweetForm__Submit');
+  const elements = document.querySelectorAll('form textarea, form button, form input');
 
   elements.forEach(element => {
     element.disabled = !enabled;
@@ -67,57 +67,48 @@ const tweets = [
   }
 ];
 
-const tweetsContainer = document.querySelector('.TweetsContainer');
+const tweetsContainer = document.querySelector('.tweets-container');
 tweets.forEach(renderTweet);
 
 // Util function to render a tweet item at the top of the feed
 function renderTweet(tweet) {
   const elem = document.createElement('article');
-  elem.classList.add('Tweet');
+  elem.classList.add('tweet');
 
   const avatar = document.createElement('img');
   avatar.src = tweet.author.image;
   avatar.alt = tweet.author.username;
-  avatar.classList.add('Tweet__Avatar');
   elem.append(avatar);
 
   const content = document.createElement('div');
-  content.classList.add('Tweet__Content');
   elem.append(content);
 
   const header = document.createElement('header');
-  header.classList.add('Tweet__Header');
   content.append(header);
 
   const user = document.createElement('h1');
   user.textContent = tweet.author.name;
-  user.classList.add('Tweet__User');
   header.append(user);
 
   const username = document.createElement('span');
   username.textContent = `@${tweet.author.username}`;
-  username.classList.add('Tweet__Username');
   user.append(username);
 
   const middot = document.createElement('span');
   middot.innerHTML = '&middot';
-  middot.classList.add('Tweet__MidDot');
   header.append(middot);
 
   const time = document.createElement('time');
   time.dateTime = tweet.created_at;
   time.textContent = '4m';
-  time.classList.add('Tweet__Time');
   header.append(time);
 
   const body = document.createElement('main');
-  body.classList.add('Tweet__Body');
   content.append(body);
 
   if (tweet.text) {
     const text = document.createElement('p');
     text.textContent = tweet.text;
-    text.classList.add('Tweet__Text');
     body.append(text);
   }
 
@@ -125,16 +116,13 @@ function renderTweet(tweet) {
     const image = document.createElement('img');
     image.src = tweet.image;
     image.alt = tweet.text;
-    image.classList.add('Tweet__Image');
     body.append(image);
   }
 
   const footer = document.createElement('footer');
-  footer.classList.add('Tweet__Footer');
   body.append(footer);
 
   const like = document.createElement('button');
-  like.classList.add('Tweet__Action');
   footer.append(like);
 
   const xmlns = 'http://www.w3.org/2000/svg';

@@ -12,32 +12,32 @@
   </head>
 
   <body>
-    <div class="Wrapper">
-      <header class="PageHeader">
-        <h1 class="PageHeading">Twitter Firebase</h1>
-        <button class="LogoutButton">Logout</button>
+    <div class="wrapper">
+      <header>
+        <h1>Twitter Firebase</h1>
+        <button class="logout-button">Logout</button>
       </header>
 
-      <section class="TweetBox">
-        <img class="TweetBox__Avatar" src="images/avatar.jpg" alt="Arnelle Balane" />
+      <section>
+        <img src="images/avatar.jpg" alt="Arnelle Balane" />
 
-        <form class="TweetForm" action="#">
-          <textarea class="TweetForm__Input" name="text" placeholder="What's happening?" maxlength="280"></textarea>
+        <form action="#">
+          <textarea name="text" placeholder="What's happening?" maxlength="280"></textarea>
 
-          <footer class="TweetForm__Footer">
-            <button class="TweetForm__Action" type="button">
+          <footer>
+            <button type="button">
               <img src="images/image.svg" alt="" />
-              <input class="TweetForm__File" type="file" name="image" accept="image/*" />
+              <input type="file" name="image" accept="image/*" />
             </button>
 
-            <button class="TweetForm__Submit">Tweet</button>
+            <button type="submit">Tweet</button>
           </footer>
         </form>
       </section>
 
-      <div class="Separator"></div>
+      <div class="separator"></div>
 
-      <div class="TweetsContainer"></div>
+      <div class="tweets-container"></div>
     </div>
 
     <script src="javascripts/feed.js"></script>

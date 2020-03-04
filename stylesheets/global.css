@@ -27,7 +27,7 @@ textarea:disabled {
   opacity: 0.5;
 }
 
-.Wrapper {
+.wrapper {
   width: 100%;
   max-width: 64rem;
   min-height: 100vh;
@@ -36,7 +36,7 @@ textarea:disabled {
   margin: 0 auto;
 }
 
-.Separator {
+.separator {
   height: 1rem;
   background-color: #e6ecf0;
 }

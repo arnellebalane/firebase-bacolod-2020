@@ -1,16 +1,16 @@
-.LoginBox {
+header {
   padding: 3.2rem 2.4rem;
   text-align: center;
 }
 
-.LoginBox__Heading {
+header h1 {
   margin-bottom: 1.6rem;
 
   font-size: 2.4rem;
   font-weight: 700;
 }
 
-.LoginButton {
+header button {
   height: 4rem;
   padding: 1rem 2rem;
   border: none;
@@ -24,21 +24,21 @@
   cursor: pointer;
 }
 
-.LoginButton--Google {
+header button[data-provider='google'] {
   color: #fff;
   background-color: #4285f4;
 }
 
-.LoginButton--Twitter {
+header button[data-provider='twitter'] {
   color: #fff;
   background-color: #1ca1f2;
 }
 
-.ContentBox {
+main {
   padding: 3.2rem 2.4rem;
   text-align: center;
 }
 
-.ContentBox__Text {
+main p {
   margin-bottom: 3.2rem;
 }

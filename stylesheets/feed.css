@@ -74,9 +74,11 @@
   border-radius: 50%;
   margin-top: -1.2rem;
   margin-bottom: -1.2rem;
+  position: relative;
 
   background-color: transparent;
   cursor: pointer;
+  overflow: hidden;
 }
 
 .TweetForm__Action:hover,
@@ -87,6 +89,17 @@
 .TweetForm__Action img {
   display: block;
   margin: auto;
+}
+
+.TweetForm__File {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  opacity: 0;
+  cursor: pointer;
 }
 
 .TweetForm__Submit {
@@ -200,4 +213,10 @@
 
 .Tweet__Action--Active svg {
   fill: currentColor;
+}
+
+.Tweet__Action svg path {
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }

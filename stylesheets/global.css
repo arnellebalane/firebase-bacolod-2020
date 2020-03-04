@@ -22,7 +22,8 @@ textarea {
   color: inherit;
 }
 
-button:disabled {
+button:disabled,
+textarea:disabled {
   opacity: 0.5;
 }
 

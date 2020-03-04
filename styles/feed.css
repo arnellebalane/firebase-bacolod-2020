@@ -105,6 +105,20 @@
   margin: 0 8px;
 }
 
+.Tweet__Body {
+  margin-bottom: 4px;
+}
+
+.Tweet__Text {
+  margin-bottom: 1.2rem;
+}
+
+.Tweet__Image {
+  display: block;
+  width: 100%;
+  border-radius: 1.6rem;
+}
+
 .Tweet__Footer {
   margin-top: 1.2rem;
   margin-left: -5px;

@@ -1,3 +1,31 @@
+.PageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0.8rem 1.6rem;
+  border-bottom: 1px solid #e6ecf0;
+}
+
+.PageHeading {
+  font-size: 1.6rem;
+}
+
+.LogoutButton {
+  padding: 0;
+  border: none;
+
+  font-size: 1.4rem;
+  color: #1ca1f2;
+
+  cursor: pointer;
+}
+
+.LogoutButton:hover,
+.LogoutButton:focus {
+  text-decoration: underline;
+}
+
 .TweetBox,
 .Tweet {
   display: flex;

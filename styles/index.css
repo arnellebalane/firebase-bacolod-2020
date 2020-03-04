@@ -32,3 +32,12 @@
   color: #fff;
   background-color: #1ca1f2;
 }
+
+.ContentBox {
+  padding: 3.2rem 2.4rem;
+  text-align: center;
+}
+
+.ContentBox p {
+  margin-bottom: 3.2rem;
+}

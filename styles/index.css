@@ -21,6 +21,7 @@
   font-weight: 700;
 
   background-color: #eee;
+  cursor: pointer;
 }
 
 .LoginButton--Google {

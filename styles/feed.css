@@ -1,0 +1,74 @@
+.TweetBox {
+  display: flex;
+  padding: 1.6rem;
+}
+
+.TweetBox__Avatar {
+  flex-shrink: 0;
+  width: 5.4rem;
+  height: 5.4rem;
+  object-fit: contain;
+  object-position: center center;
+  border-radius: 50%;
+}
+
+.TweetForm {
+  flex: auto;
+}
+
+.TweetForm__Input {
+  display: block;
+  width: 100%;
+  padding: 1.6rem;
+  border: none;
+
+  font-size: 1.8rem;
+  resize: none;
+  outline: none;
+}
+
+.TweetForm__Footer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-left: 4px;
+  margin-top: 2rem;
+}
+
+.TweetForm__Action {
+  width: 4rem;
+  height: 4rem;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  margin-top: -1.2rem;
+  margin-bottom: -1.2rem;
+
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.TweetForm__Action:hover,
+.TweetForm__Action:focus {
+  background-color: rgba(28, 161, 242, 0.1);
+}
+
+.TweetForm__Action img {
+  display: block;
+  margin: auto;
+}
+
+.TweetForm__Submit {
+  height: 4rem;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 2rem;
+  margin-left: auto;
+
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+
+  background-color: #1ca1f2;
+  cursor: pointer;
+}

@@ -50,6 +50,7 @@ window.Utils = (() => {
   function enableImageAttachments() {
     const form = document.querySelector('form');
     const input = document.querySelector('input[type="file"]');
+    if (!form || !input) return;
 
     input.addEventListener('change', async event => {
       const file = event.target.files[0];

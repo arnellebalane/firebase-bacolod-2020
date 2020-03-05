@@ -28,6 +28,7 @@ document.querySelector('form').addEventListener('submit', async event => {
 });
 
 async function createTweet(text, image) {
+  console.log({ text, image });
   /**
    * TODO: Implement this function that creates a new tweet and stores it in
    * Firebase Cloud Firestore.

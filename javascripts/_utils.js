@@ -38,6 +38,71 @@ window.Utils = (() => {
 
   function resetTweetForm() {
     document.querySelector('form').reset();
+    hideTweetFormImagePreview();
+  }
+
+  function enableImageAttachments() {
+    const form = document.querySelector('form');
+    const input = document.querySelector('input[type="file"]');
+
+    input.addEventListener('change', async event => {
+      const file = event.target.files[0];
+      const fileUrl = await readFileAsDataUrl(file);
+
+      showTweetFormImagePreview(fileUrl);
+    });
+
+    form.addEventListener('click', event => {
+      const remove = event.target.closest('.image-preview button');
+      if (!remove) return;
+
+      input.value = null;
+      hideTweetFormImagePreview();
+    });
+  }
+
+  function readFileAsDataUrl(file) {
+    return new Promise(resolve => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        resolve(reader.result);
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  function showTweetFormImagePreview(imageUrl) {
+    let preview = document.querySelector('.image-preview');
+
+    if (!preview) {
+      preview = document.createElement('div');
+      preview.classList.add('image-preview');
+
+      const image = document.createElement('img');
+      preview.append(image);
+
+      const button = document.createElement('button');
+      button.type = 'button';
+      preview.append(button);
+
+      const icon = document.createElement('img');
+      icon.src = 'images/close.svg';
+      button.append(icon);
+
+      const footer = document.querySelector('form footer');
+      footer.insertAdjacentElement('beforebegin', preview);
+    }
+
+    const image = preview.querySelector('img');
+    image.src = imageUrl;
+  }
+
+  function hideTweetFormImagePreview() {
+    const preview = document.querySelector('.image-preview');
+
+    if (preview) {
+      preview.remove();
+    }
   }
 
   function setUserAvatar(url) {
@@ -128,6 +193,8 @@ window.Utils = (() => {
 
     tweetsContainer.prepend(elem);
   }
+
+  enableImageAttachments();
 
   return {
     disableLoginButtons,

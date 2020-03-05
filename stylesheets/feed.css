@@ -64,6 +64,11 @@ form .image-preview {
   position: relative;
 }
 
+form .image-preview.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 form .image-preview > img {
   display: block;
   width: 100%;

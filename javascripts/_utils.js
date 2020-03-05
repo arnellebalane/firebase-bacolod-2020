@@ -21,10 +21,16 @@ window.Utils = (() => {
   }
 
   function setTweetFormState(enabled) {
-    const elements = document.querySelectorAll('form textarea, form button, form input');
+    const elements = document.querySelectorAll('form textarea, form button, form input, form .image-preview');
 
     elements.forEach(element => {
       element.disabled = !enabled;
+
+      if (enabled) {
+        element.classList.remove('disabled');
+      } else {
+        element.classList.add('disabled');
+      }
     });
   }
 

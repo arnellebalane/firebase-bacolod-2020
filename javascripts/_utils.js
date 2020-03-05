@@ -36,6 +36,10 @@ window.Utils = (() => {
     setTweetFormState(true);
   }
 
+  function resetTweetForm() {
+    document.querySelector('form').reset();
+  }
+
   function setUserAvatar(url) {
     document.querySelector('section > img').src = url;
   }
@@ -131,6 +135,7 @@ window.Utils = (() => {
     disableLogoutButton,
     disableTweetForm,
     enableTweetForm,
+    resetTweetForm,
     setUserAvatar,
     renderTweet
   };

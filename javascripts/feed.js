@@ -19,9 +19,11 @@ document.querySelector('form').addEventListener('submit', async event => {
   const image = form.image.files[0] || null;
 
   if (!text && !image) return;
-
   Utils.disableTweetForm();
+
   await createTweet(text, image);
+
+  Utils.resetTweetForm();
   Utils.enableTweetForm();
 });
 

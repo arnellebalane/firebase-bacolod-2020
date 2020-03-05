@@ -1,24 +1,21 @@
-// Run code whenever any of the login buttons are clicked
-document.querySelector('.login-buttons').addEventListener('click', event => {
+document.querySelector('.login-buttons').addEventListener('click', async event => {
   const button = event.target.closest('button');
   if (!button) return;
 
+  Utils.disableLoginButtons();
+
   const provider = button.dataset.provider;
-  console.log('Login with provider:', provider);
+  await login(provider);
 
-  setLoginButtonState(false);
-  setTimeout(() => {
-    setLoginButtonState(true);
-
-    location.pathname = 'feed';
-  }, 1000);
+  Utils.enableLoginButtons();
+  location.pathname = 'feed';
 });
 
-// Util function to enable/disable all the login buttons
-function setLoginButtonState(enabled) {
-  const buttons = document.querySelectorAll('.login-buttons button');
-
-  buttons.forEach(button => {
-    button.disabled = !enabled;
-  });
+async function login(provider) {
+  /**
+   * TODO: Implement this login functiont using Firebase Authentication
+   *
+   * "provider" parameter will either be "google" or "twitter" depending on
+   * which login button was clicked. We need to login using the given provider.
+   */
 }

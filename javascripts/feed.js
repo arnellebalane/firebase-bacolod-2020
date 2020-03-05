@@ -114,3 +114,35 @@ async function removeTweet(tweetId) {
    * "tweetId" is a string representing the ID of the tweet to be deleted.
    */
 }
+
+document.addEventListener('click', async event => {
+  const button = event.target.closest('.like-tweet');
+  if (!button) return;
+
+  const tweetId = button.closest('.tweet').dataset.id;
+  const isLiked = button.classList.contains('active');
+
+  if (isLiked) {
+    Utils.unlikeTweet(tweetId);
+    await unlikeTweet(tweetId);
+  } else {
+    Utils.likeTweet(tweetId);
+    await likeTweet(tweetId);
+  }
+});
+
+async function likeTweet(tweetId) {
+  /**
+   * TODO: Implement this function that likes a tweet.
+   *
+   * "tweetId" is a string representing the ID of the tweet to be liked.
+   */
+}
+
+async function unlikeTweet(tweetId) {
+  /**
+   * TODO: Implement this function that unlikes a tweet.
+   *
+   * "tweetId" is a string representing the ID of the tweet to be unliked.
+   */
+}

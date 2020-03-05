@@ -108,10 +108,9 @@ window.Utils = (() => {
 
   function hideTweetFormImagePreview() {
     const preview = document.querySelector('.image-preview');
+    if (!preview) return;
 
-    if (preview) {
-      preview.remove();
-    }
+    preview.remove();
   }
 
   function setCurrentUser(user) {
@@ -185,6 +184,7 @@ window.Utils = (() => {
     body.append(footer);
 
     const like = document.createElement('button');
+    like.classList.add('like-tweet');
     footer.append(like);
 
     const xmlns = 'http://www.w3.org/2000/svg';
@@ -217,10 +217,41 @@ window.Utils = (() => {
 
   function removeTweet(tweetId) {
     const tweet = document.querySelector(`.tweet[data-id="${tweetId}"]`);
+    if (!tweet) return;
 
-    if (tweet) {
-      tweet.remove();
-    }
+    tweet.remove();
+  }
+
+  function likeTweet(tweetId) {
+    const tweet = document.querySelector(`.tweet[data-id="${tweetId}"]`);
+    if (!tweet) return;
+
+    const like = tweet.querySelector('.like-tweet');
+    like.classList.add('active');
+
+    const likesText = like.childNodes[1];
+    const likes = parseInt(likesText.textContent, 10);
+    likesText.textContent = likes + 1;
+  }
+
+  function unlikeTweet(tweetId) {
+    const tweet = document.querySelector(`.tweet[data-id="${tweetId}"]`);
+    if (!tweet) return;
+
+    const like = tweet.querySelector('.like-tweet');
+    like.classList.remove('active');
+
+    const likesText = like.childNodes[1];
+    const likes = parseInt(likesText.textContent, 10);
+    likesText.textContent = likes - 1;
+  }
+
+  function setTweetLikesCount(tweetId, count) {
+    const tweet = document.querySelector(`.tweet[data-id="${tweetId}"]`);
+    if (!tweet) return;
+
+    const likes = tweet.querySelector('.like-tweet');
+    likes.childeNodes[1].textContent = count;
   }
 
   enableImageAttachments();
@@ -235,6 +266,9 @@ window.Utils = (() => {
     setCurrentUser,
     setUserAvatar,
     renderTweet,
-    removeTweet
+    removeTweet,
+    likeTweet,
+    unlikeTweet,
+    setTweetLikesCount
   };
 })();

@@ -65,6 +65,7 @@ const tweets = [
     created_at: new Date().toISOString(),
     likes: 50,
     author: {
+      id: 'abc123',
       name: 'Arnelle Balane',
       username: 'arnellebalane',
       image: 'images/avatar.jpg'
@@ -77,6 +78,7 @@ const tweets = [
     created_at: new Date().toISOString(),
     likes: 20,
     author: {
+      id: 'abc123',
       name: 'Arnelle Balane',
       username: 'arnellebalane',
       image: 'images/avatar.jpg'
@@ -92,5 +94,23 @@ function fetchTweets() {
    * Cloud Firestore.
    *
    * The tweets data should be rendered into the page using Utils.renderTweet.
+   */
+}
+
+document.addEventListener('click', async event => {
+  const button = event.target.closest('.delete-tweet');
+  if (!button) return;
+
+  const tweetId = button.closest('.tweet').dataset.id;
+
+  Utils.removeTweet(tweetId);
+  await removeTweet(tweetId);
+});
+
+async function removeTweet(tweetId) {
+  /**
+   * TODO: Implement this function that deletes a tweet.
+   *
+   * "tweetId" is a string representing the ID of the tweet to be deleted.
    */
 }

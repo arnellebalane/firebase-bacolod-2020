@@ -168,6 +168,7 @@ form button[type='submit'] {
 
 .tweet header {
   display: flex;
+  align-items: baseline;
   margin-bottom: 4px;
 }
 
@@ -188,6 +189,16 @@ form button[type='submit'] {
 
 .tweet header > span {
   margin: 0 8px;
+}
+
+.tweet header button {
+  padding: 0;
+  border: none;
+  margin-left: auto;
+
+  font-size: 14px;
+  color: #f44336;
+  background-color: transparent;
 }
 
 .tweet main {

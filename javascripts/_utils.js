@@ -1,4 +1,6 @@
 window.Utils = (() => {
+  let currentUser = null;
+
   function setLoginButtonState(enabled) {
     const buttons = document.querySelectorAll('.login-buttons button');
 
@@ -112,6 +114,10 @@ window.Utils = (() => {
     }
   }
 
+  function setCurrentUser(user) {
+    currentUser = user;
+  }
+
   function setUserAvatar(url) {
     document.querySelector('section > img').src = url;
   }
@@ -122,6 +128,7 @@ window.Utils = (() => {
   function renderTweet(tweet) {
     const elem = document.createElement('article');
     elem.classList.add('tweet');
+    elem.dataset.id = tweet.id;
 
     const avatar = document.createElement('img');
     avatar.src = tweet.author.image;
@@ -150,6 +157,13 @@ window.Utils = (() => {
     time.dateTime = tweet.created_at;
     time.textContent = '4m';
     header.append(time);
+
+    if (currentUser && currentUser.id === tweet.author.id) {
+      const remove = document.createElement('button');
+      remove.textContent = 'Delete';
+      remove.classList.add('delete-tweet');
+      header.append(remove);
+    }
 
     const body = document.createElement('main');
     content.append(body);
@@ -201,6 +215,14 @@ window.Utils = (() => {
     tweetsContainer.prepend(elem);
   }
 
+  function removeTweet(tweetId) {
+    const tweet = document.querySelector(`.tweet[data-id="${tweetId}"]`);
+
+    if (tweet) {
+      tweet.remove();
+    }
+  }
+
   enableImageAttachments();
 
   return {
@@ -210,7 +232,9 @@ window.Utils = (() => {
     disableTweetForm,
     enableTweetForm,
     resetTweetForm,
+    setCurrentUser,
     setUserAvatar,
-    renderTweet
+    renderTweet,
+    removeTweet
   };
 })();

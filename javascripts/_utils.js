@@ -36,6 +36,10 @@ window.Utils = (() => {
     setTweetFormState(true);
   }
 
+  function setUserAvatar(url) {
+    document.querySelector('section > img').src = url;
+  }
+
   const tweetsContainer = document.querySelector('.tweets-container');
 
   // Util function to render a tweet item at the top of the feed
@@ -127,6 +131,7 @@ window.Utils = (() => {
     disableLogoutButton,
     disableTweetForm,
     enableTweetForm,
+    setUserAvatar,
     renderTweet
   };
 })();

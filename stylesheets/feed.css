@@ -142,6 +142,10 @@ form button[type='submit'] {
   color: #657786;
 }
 
+.tweet header h1 span {
+  margin-left: 8px;
+}
+
 .tweet header > span {
   margin: 0 8px;
 }

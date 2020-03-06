@@ -271,7 +271,7 @@ window.Utils = (() => {
     if (!tweet) return;
 
     const likes = tweet.querySelector('.like-tweet');
-    likes.childeNodes[1].textContent = count;
+    likes.childNodes[1].textContent = count;
   }
 
   function setUserLikedTweets(tweets) {

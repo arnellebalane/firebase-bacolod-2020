@@ -129,6 +129,9 @@ function fetchTweets() {
         } else if (change.type === 'removed') {
           const doc = change.doc;
           Utils.removeTweet(doc.id);
+        } else if (change.type === 'modified') {
+          const doc = change.doc;
+          Utils.setTweetLikesCount(doc.id, doc.data().likes);
         }
       });
     });

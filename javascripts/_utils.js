@@ -1,5 +1,6 @@
 window.Utils = (() => {
   let currentUser = null;
+  let likedTweets = [];
 
   function redirectToFeed() {
     location.pathname = 'feed.html';
@@ -193,6 +194,9 @@ window.Utils = (() => {
 
     const like = document.createElement('button');
     like.classList.add('like-tweet');
+    if (likedTweets.includes(tweet.id)) {
+      like.classList.add('active');
+    }
     footer.append(like);
 
     const xmlns = 'http://www.w3.org/2000/svg';
@@ -230,6 +234,14 @@ window.Utils = (() => {
     tweet.remove();
   }
 
+  function markTweetAsLiked(tweetId) {
+    const tweet = document.querySelector(`.tweet[data-id="${tweetId}"]`);
+    if (!tweet) return;
+
+    const like = tweet.querySelector('.like-tweet');
+    like.classList.add('active');
+  }
+
   function likeTweet(tweetId) {
     const tweet = document.querySelector(`.tweet[data-id="${tweetId}"]`);
     if (!tweet) return;
@@ -262,6 +274,11 @@ window.Utils = (() => {
     likes.childeNodes[1].textContent = count;
   }
 
+  function setUserLikedTweets(tweets) {
+    likedTweets = tweets.map(tweet => tweet.id);
+    likedTweets.forEach(markTweetAsLiked);
+  }
+
   enableImageAttachments();
 
   return {
@@ -277,8 +294,10 @@ window.Utils = (() => {
     setUserAvatar,
     renderTweet,
     removeTweet,
+    markTweetAsLiked,
     likeTweet,
     unlikeTweet,
-    setTweetLikesCount
+    setTweetLikesCount,
+    setUserLikedTweets
   };
 })();

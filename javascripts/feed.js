@@ -12,6 +12,7 @@ function onAuthStateChanged() {
       Utils.setCurrentUser(user);
       Utils.setUserAvatar(user.photoURL);
       Utils.enableTweetForm();
+      fetchLikedTweets();
     } else {
       Utils.redirectToHome();
     }
@@ -199,4 +200,31 @@ async function unlikeTweet(tweetId) {
    *
    * "tweetId" is a string representing the ID of the tweet to be unliked.
    */
+  const currentUser = firebase.auth().currentUser;
+  await firebase
+    .firestore()
+    .collection('users')
+    .doc(currentUser.uid)
+    .collection('likes')
+    .doc(tweetId)
+    .delete();
+}
+
+function fetchLikedTweets() {
+  /**
+   * TODO: Implement this function that fetches the tweets that were liked by
+   * the current user. This should update in real time.
+   *
+   * Current user can be obtained from firebase.auth().currentUser
+   */
+
+  const currentUser = firebase.auth().currentUser;
+  firebase
+    .firestore()
+    .collection('users')
+    .doc(currentUser.uid)
+    .collection('likes')
+    .onSnapshot(querySnapshot => {
+      Utils.setUserLikedTweets(querySnapshot.docs);
+    });
 }

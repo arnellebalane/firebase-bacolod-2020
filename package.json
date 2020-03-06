@@ -1,0 +1,20 @@
+{
+  "name": "firebase-bacolod-2020",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arnellebalane/firebase-bacolod-2020.git"
+  },
+  "keywords": [],
+  "author": "Arnelle Balane <arnellebalane@gmail.com> (https://arnellebalane.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/arnellebalane/firebase-bacolod-2020/issues"
+  },
+  "homepage": "https://github.com/arnellebalane/firebase-bacolod-2020#readme"
+}

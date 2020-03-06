@@ -220,7 +220,7 @@ window.Utils = (() => {
     const likeCount = document.createTextNode(tweet.likes);
     like.append(likeCount);
 
-    tweetsContainer.prepend(elem);
+    tweetsContainer.append(elem);
   }
 
   function removeTweet(tweetId) {

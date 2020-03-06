@@ -93,39 +93,6 @@ async function uploadFile(path, file) {
    */
 }
 
-const tweets = [
-  {
-    id: '12345',
-    text:
-      "Run outside as soon as door open tweeting a baseball. Meoooow russian blue ignore the squirrels, you'll never " +
-      'catch them anyway or annoy the old grumpy cat, start a fight and then retreat to wash when i lose rub face on owner.',
-    image: null,
-    created_at: new Date().toISOString(),
-    likes: 50,
-    author: {
-      id: 'abc123',
-      name: 'Arnelle Balane',
-      username: 'arnellebalane',
-      image: 'images/avatar.jpg'
-    }
-  },
-  {
-    id: '67890',
-    text: 'Sit and stare playing with balls of wool get scared by sudden appearance of cucumber for where is my slave?',
-    image: 'images/image.jpg',
-    created_at: new Date().toISOString(),
-    likes: 20,
-    author: {
-      id: 'abc123',
-      name: 'Arnelle Balane',
-      username: 'arnellebalane',
-      image: 'images/avatar.jpg'
-    }
-  }
-];
-
-tweets.forEach(Utils.renderTweet);
-
 function fetchTweets() {
   /**
    * TODO: Implement this function that fetches tweets data from Firebase
@@ -133,6 +100,19 @@ function fetchTweets() {
    *
    * The tweets data should be rendered into the page using Utils.renderTweet.
    */
+
+  firebase
+    .firestore()
+    .collection('tweets')
+    .orderBy('created_at', 'desc')
+    .get()
+    .then(querySnapshot => {
+      querySnapshot.forEach(doc => {
+        const tweet = doc.data();
+        tweet.id = doc.id;
+        Utils.renderTweet(tweet);
+      });
+    });
 }
 
 fetchTweets();

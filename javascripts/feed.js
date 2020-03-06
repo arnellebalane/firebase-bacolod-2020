@@ -104,13 +104,15 @@ function fetchTweets() {
   firebase
     .firestore()
     .collection('tweets')
-    .orderBy('created_at', 'desc')
-    .get()
-    .then(querySnapshot => {
-      querySnapshot.forEach(doc => {
-        const tweet = doc.data();
-        tweet.id = doc.id;
-        Utils.renderTweet(tweet);
+    .orderBy('created_at')
+    .onSnapshot(querySnapshot => {
+      querySnapshot.docChanges().forEach(change => {
+        if (change.type === 'added') {
+          const doc = change.doc;
+          const tweet = doc.data();
+          tweet.id = doc.id;
+          Utils.renderTweet(tweet);
+        }
       });
     });
 }

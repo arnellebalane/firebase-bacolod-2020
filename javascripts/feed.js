@@ -1,3 +1,22 @@
+function onAuthStateChanged() {
+  /**
+   * TODO: Subsribe to Firebase user state changes.
+   *
+   * Display user avatar in the tweet form once a user is logged in.
+   */
+
+  firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+      Utils.setCurrentUser(user);
+      Utils.setUserAvatar(user.photoURL);
+    } else {
+      Utils.redirectToHome();
+    }
+  });
+}
+
+onAuthStateChanged();
+
 document.querySelector('.logout-button').addEventListener('click', async () => {
   Utils.disableLogoutButton();
   await logout();
@@ -94,6 +113,8 @@ function fetchTweets() {
    * The tweets data should be rendered into the page using Utils.renderTweet.
    */
 }
+
+fetchTweets();
 
 document.addEventListener('click', async event => {
   const button = event.target.closest('.delete-tweet');

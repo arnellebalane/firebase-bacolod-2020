@@ -112,6 +112,9 @@ function fetchTweets() {
           const tweet = doc.data();
           tweet.id = doc.id;
           Utils.renderTweet(tweet);
+        } else if (change.type === 'removed') {
+          const doc = change.doc;
+          Utils.removeTweet(doc.id);
         }
       });
     });

@@ -1,8 +1,6 @@
 document.querySelector('.logout-button').addEventListener('click', async () => {
   Utils.disableLogoutButton();
   await logout();
-
-  location.pathname = '/';
 });
 
 async function logout() {

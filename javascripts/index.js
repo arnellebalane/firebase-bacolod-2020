@@ -8,7 +8,6 @@ document.querySelector('.login-buttons').addEventListener('click', async event =
   await login(provider);
 
   Utils.enableLoginButtons();
-  location.pathname = 'feed';
 });
 
 async function login(provider) {

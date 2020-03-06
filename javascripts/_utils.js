@@ -1,6 +1,14 @@
 window.Utils = (() => {
   let currentUser = null;
 
+  function redirectToFeed() {
+    location.pathname = 'feed.html';
+  }
+
+  function redirectToHome() {
+    location.pathname = '/';
+  }
+
   function setLoginButtonState(enabled) {
     const buttons = document.querySelectorAll('.login-buttons button');
 
@@ -257,6 +265,8 @@ window.Utils = (() => {
   enableImageAttachments();
 
   return {
+    redirectToFeed,
+    redirectToHome,
     disableLoginButtons,
     enableLoginButtons,
     disableLogoutButton,

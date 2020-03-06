@@ -180,6 +180,17 @@ async function likeTweet(tweetId) {
    *
    * "tweetId" is a string representing the ID of the tweet to be liked.
    */
+
+  const currentUser = firebase.auth().currentUser;
+  await firebase
+    .firestore()
+    .collection('users')
+    .doc(currentUser.uid)
+    .collection('likes')
+    .doc(tweetId)
+    .set({
+      created_at: firebase.firestore.FieldValue.serverTimestamp()
+    });
 }
 
 async function unlikeTweet(tweetId) {

@@ -49,7 +49,6 @@ document.querySelector('form').addEventListener('submit', async event => {
 });
 
 async function createTweet(text, image) {
-  console.log({ text, image });
   /**
    * TODO: Implement this function that creates a new tweet and stores it in
    * Firebase Cloud Firestore.
@@ -63,6 +62,24 @@ async function createTweet(text, image) {
    * Other tweet info, such as created date, author, etc. should be stored in
    * the tweet data as well.
    */
+  const currentUser = firebase.auth().currentUser;
+  const tweet = {
+    text: text,
+    image: null,
+    created_at: firebase.firestore.FieldValue.serverTimestamp(),
+    likes: 0,
+    author: {
+      id: currentUser.uid,
+      name: currentUser.displayName,
+      username: currentUser.uid,
+      image: currentUser.photoURL
+    }
+  };
+
+  await firebase
+    .firestore()
+    .collection('tweets')
+    .add(tweet);
 }
 
 async function uploadFile(path, file) {

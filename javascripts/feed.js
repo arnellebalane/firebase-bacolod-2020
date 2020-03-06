@@ -76,6 +76,11 @@ async function createTweet(text, image) {
     }
   };
 
+  if (image) {
+    const path = `images/${currentUser.uid}/${Date.now()}.jpg`;
+    tweet.image = await uploadFile(path, image);
+  }
+
   await firebase
     .firestore()
     .collection('tweets')
@@ -91,6 +96,14 @@ async function uploadFile(path, file) {
    *
    * This function should return the URL to the uploaded file.
    */
+
+  const ref = firebase.storage().ref(path);
+  const uploadTask = ref.put(file);
+  uploadTask.on('state_changed', snapshot => {
+    console.log(snapshot.bytesTransferred, snapshot.totalBytes);
+  });
+  await uploadTask;
+  return ref.getDownloadURL();
 }
 
 function fetchTweets() {

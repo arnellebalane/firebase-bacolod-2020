@@ -165,7 +165,7 @@ window.Utils = (() => {
     time.textContent = '4m';
     header.append(time);
 
-    if (currentUser && currentUser.id === tweet.author.id) {
+    if (currentUser && currentUser.uid === tweet.author.id) {
       const remove = document.createElement('button');
       remove.textContent = 'Delete';
       remove.classList.add('delete-tweet');

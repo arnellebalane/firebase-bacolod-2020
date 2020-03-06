@@ -5,10 +5,13 @@ function onAuthStateChanged() {
    * Display user avatar in the tweet form once a user is logged in.
    */
 
+  Utils.disableTweetForm();
+
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
       Utils.setCurrentUser(user);
       Utils.setUserAvatar(user.photoURL);
+      Utils.enableTweetForm();
     } else {
       Utils.redirectToHome();
     }
@@ -26,6 +29,7 @@ async function logout() {
   /**
    * TODO: Implement this logout function using Firebase authentication.
    */
+  firebase.auth().signOut();
 }
 
 document.querySelector('form').addEventListener('submit', async event => {

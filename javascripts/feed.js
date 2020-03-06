@@ -135,6 +135,11 @@ async function removeTweet(tweetId) {
    *
    * "tweetId" is a string representing the ID of the tweet to be deleted.
    */
+  await firebase
+    .firestore()
+    .collection('tweets')
+    .doc(tweetId)
+    .delete();
 }
 
 document.addEventListener('click', async event => {

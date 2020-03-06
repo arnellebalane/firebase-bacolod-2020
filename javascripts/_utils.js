@@ -275,6 +275,10 @@ window.Utils = (() => {
   }
 
   function setUserLikedTweets(tweets) {
+    [...document.querySelectorAll('.like-tweet.active')].forEach(button => {
+      button.classList.remove('active');
+    });
+
     likedTweets = tweets.map(tweet => tweet.id);
     likedTweets.forEach(markTweetAsLiked);
   }
